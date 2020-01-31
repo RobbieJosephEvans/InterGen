@@ -1,0 +1,129 @@
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <style>
+            .buttons{
+
+                font-size: 010px;
+
+            }
+        </style>
+        
+    </head>
+
+    <body style="font-family: Lucida Console">
+
+        <div class="container">
+
+        <h3>Select Senior Homes Near You (minimum of 5):</h3>
+
+        <div id="buttons">
+        </div>
+        <br>
+        <button onclick="sethomes()">Continue</button>
+        <script src="Retirement_Homes_WGS84.geojson"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script>
+            let userid;
+             var firebaseConfig = {
+                apiKey: "AIzaSyD-3h6lfab3mP5Qdhy5ser3wUdH8k7fF7U",
+                authDomain: "project1-d5434.firebaseapp.com",
+                databaseURL: "https://project1-d5434.firebaseio.com",
+                projectId: "project1-d5434",
+                storageBucket: "project1-d5434.appspot.com",
+                messagingSenderId: "1035093859939",
+                appId: "1:1035093859939:web:637ed330927bad29236256",
+                measurementId: "G-99E92MZGPG"
+            };
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            firebase.auth().onAuthStateChanged((user)=> {
+              if (user) {
+                    // User is signed in.
+            //        let email = user.email;
+            //        let emailVerified = user.emailVerified;
+                  userid = user.uid;
+            //        let providerData = user.providerData;
+                  console.log(userid)
+              } else {
+                  console.log('not signed in')
+                    // User is signed out.
+              }
+            });
+            
+            // Initialize Firebase
+
+            const db = firebase.firestore();
+            var residentialhome = [];
+            for(i=0;i<data.length;i++){
+                var strings=data[0]["features"][i]["properties"]["NAME"];
+                residentialhome.push({
+                    name:strings,
+                    value:false
+                })
+            }
+            residentialhome.shift()
+            console.log(residentialhome)
+            var string="";
+            for(i=0;i<data[0]["features"].length;i++){
+                string=string + "<button id="+"'"+data[0]['features'][i]['properties']['NAME']+"'"+ " onclick=changecolour(data[0]['features']["+i+"]['properties']['NAME']) style=';'>"+data[0]["features"][i]["properties"]["NAME"]+"</button>"
+
+
+                ;
+                
+            }
+            document.getElementById("buttons").innerHTML=string;
+            
+            for(i=0;i<data[0]["features"].length;i++){
+                var strings=data[0]["features"][i]["properties"]["NAME"];
+                residentialhome.push({
+                    name:strings,
+                    value:false
+                })
+            }
+            function changecolour(info){
+                console.log(info)
+                for(i=0;i<data[0]["features"].length;i++){
+                    if(info==residentialhome[i]['name']){
+                        if(residentialhome[i]['value']==false){
+                            residentialhome[i]['value']=true;
+                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#8860d0";
+                        } else if(residentialhome[i]['value']==true){
+                            residentialhome[i]['value']=false;
+                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#ffffff";
+                        }
+                        
+                    }
+                }
+            }
+            function sethomes(){
+                var count=0;
+                var list=[];
+                for(i=0;i<residentialhome.length;i++){
+                        if(residentialhome[i]["value"]==true){
+                            count=count+1
+                            list.push(residentialhome[i]["name"])
+                        }
+                    }
+                if(count<5){
+                    console.log("select more senior homes")
+                }else{
+                    for(i=0;i<list.length;i++){
+                        db.collection("users").doc(userid).collection("Senior Homes").add({
+                            home:list[i]
+                        })
+                    }
+                        window.open("posts.html")
+                    
+                }
+                
+            }
+            
+        </script>
+        
+    </body>
+</html>
