@@ -1,0 +1,435 @@
+<html>
+
+
+<head>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ 
+
+  </head>
+
+      <title>Sidenav Sample</title>
+        
+        <style>
+            button {
+                margin-top: 10px;
+            }
+
+      * {box-sizing: border-box;}
+        body {font-family: Verdana, sans-serif;}
+        .mySlides {display: none;}
+        img {vertical-align: middle;}
+        
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #111;
+      }
+
+        * {box-sizing: border-box;}
+        body {font-family: Verdana, sans-serif;}
+        .mySlides {display: none;}
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: auto;
+        }
+
+        /* Caption text */
+        .text {
+          color: #f2f2f2;
+          font-size: 15px;
+          padding: 8px 12px;
+          position: absolute;
+          bottom: 8px;
+          width: 100%;
+          text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+          height: 15px;
+          width: 15px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+
+        .active {
+          background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+          -webkit-animation-name: fade;
+          -webkit-animation-duration: 1.5s;
+          animation-name: fade;
+          animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+          from {opacity: 0.6} 
+          to {opacity: 1}
+        }
+
+        @keyframes fade {
+          from {opacity: 0.6} 
+          to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .text {font-size: 11px}
+        }
+
+      </style>
+        
+ <body style="font-family: Lucida Console">
+
+
+  
+
+  <ul class="">
+  <!--<li><img src="interGenLogo.jpg" style="height:50%"></li> -->
+  <div class="container" style="">
+  <!-- <a src="interGenLogo.jpg" style="position: absolute;margin-top: 0px;"></a> -->
+  <li><a class="active" href="testerIndex2.html">InterGen</a></li>
+  <li><a href="#OurMission">Our Mission</a></li>
+  <!-- <li><a href="posts.html">Posts</a></li> -->
+  <li><a href="#GetStarted">Log In / Sign Up</a></li>
+  <li><a href="#AdditionalInformation">More Information</a></li>
+  </div>
+</ul>
+
+
+ <!--slideShow start -->
+
+
+  <div class="mySlides fade" style="background-image: linear-gradient(to bottom right, #c1c8e4, #84ceeb, #8860d0,#5ab9ea);">
+ 
+    <img src="signUpImage.jpg" style="width:100%;height:500px;opacity: 50%;">
+    <div class="text" style="font-size: 50px;padding-bottom: 125px;color: black;font-size:!important;">1: Sign Up</div>
+  </div>
+
+  <div class="mySlides fade">
+
+    <img src="https://www.docusign.co.uk/blog/wp-content/uploads/sites/12/2014/01/Tablet3-720x477.jpg" style="width:100%; height: 500px;opacity: 70%;">
+    <div class="text" style="font-size: 50px;padding-bottom: 125px;color: black;">2: Customize Profile</div>
+  </div>
+
+  <div class="mySlides fade">
+ 
+    <img src="https://www.gozaround.com/blog/wp-content/uploads/2018/07/unnamed-1-1-1280x640.jpg" style="width:100%;height:500px;opacity: 70%;">
+    <div class="text" style="font-size: 50px;padding-bottom: 125px;color: black;">3: Volunteer</div>
+  </div>
+
+  </div>
+  
+
+</div>
+</div>
+      
+
+  <div id="blue" class="block blue" style="background-image: linear-gradient(to bottom right, #c1c8e4, #84ceeb, #8860d0,#5ab9ea);">
+<hr style="margin-left: 0px;margin-right: 0px;margin-top:0px;border:5px solid black;" id="OurMission"> <!--215px margin -->
+
+  <div style="text-align:center">
+    <span class="dot" style="opacity: 0%;"></span> 
+    <span class="dot" style="opacity: 0%;"></span> 
+    <span class="dot" style="opacity: 0%;"></span> 
+  </div>
+
+
+<!--slideShow end -->
+
+
+  <!-- sidenav
+        <ul id="slide-out" class="sidenav">
+        <li><div class="user-view">
+          
+        <li><a href="#!">First Link With Icon</a></li>
+        <li><a href="#!">Second Link</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Subheader</a></li>
+        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+        
+        
+end sidenav -->
+
+<!--about us block start -->
+
+  <div class="container">
+
+  <h1>InterGen - What We Do</h1>
+  <p style="font-size: 20px;">Through the use of a dynamic website that can create accounts, usernames, and posts, InterGen connects senior citizens in hospitals and senior homes with high school students. Human interaction is essential for the good health of people but sometimes difficult to find as senior citizens. Whether families and friends are busy or far away, there are a variety of reasons why some seniors are alone and lacking interaction. This can be detrimental to one's emotional and even physical health, and symptoms are amplified in hospitals and senior homes. For this reason, InterGen provides a platform for students to visit seniors in retirement homes.</p>
+  <br>
+  <br>
+<!--about us block end -->
+
+</div>
+
+
+<!-- "get started" block start-->
+
+
+<div style="background-color: white;">
+
+<hr style="margin-left: 0px;margin-right: 0px;margin-top:0px;border:5px solid black;" id="GetStarted"> <!--215px margin -->
+
+
+
+  <div class="container">
+    
+    
+    <h1>Get Started</h1>
+    <h6 class="greyColor" style="color: black;">Login:</h6>
+        <input type="text" placeholder="example@email.com" id="email">
+        <input type="password" placeholder="password" id="password">
+        <button onclick="logIn()" class="waves-effect waves-light btn" style="background-color: #8860d0">Log in</button>
+        <br>
+        <br>
+        <br>
+        <h6 class="greyColor" style="color: black;">Don't have an account? Sign up:</h6>
+        <input type="text" placeholder="example@email.com" id="email2">
+        <input type="password" placeholder="password" id="password2">
+        <button onclick="signUp()" class="waves-effect waves-light btn" style="background-color: #8860d0">Sign up</button>
+        <br>
+        <br>
+        <br>
+
+        
+
+    </div>
+  </div>
+
+<!-- "profile" block end-->
+
+<!-- "additional information" block end-->
+
+
+  <div style="background-image: linear-gradient(to bottom right, #c1c8e4, #84ceeb, #8860d0,#5ab9ea);">
+
+<hr style="margin-left: 0px;margin-right: 0px;margin-top:0px;border:5px solid black;"> <!--215px margin -->
+
+
+
+  <div class="container" id="AdditionalInformation">
+    
+    
+    <h1>Additional Information</h1>
+    <div class="col s12 m7">
+        
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="card-action">
+              <a href="#" style="color: #8860d0;">More Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+        <br>
+        <br>
+        <br>
+
+        
+
+    </div>
+  </div>
+
+  
+
+        
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script>
+          var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2200); // Change image every 2 seconds
+            }
+
+
+
+
+             var firebaseConfig = {
+                apiKey: "AIzaSyD-3h6lfab3mP5Qdhy5ser3wUdH8k7fF7U",
+                authDomain: "project1-d5434.firebaseapp.com",
+                databaseURL: "https://project1-d5434.firebaseio.com",
+                projectId: "project1-d5434",
+                storageBucket: "project1-d5434.appspot.com",
+                messagingSenderId: "1035093859939",
+                appId: "1:1035093859939:web:637ed330927bad29236256",
+                measurementId: "G-99E92MZGPG"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            const db = firebase.firestore();
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+            firebase.auth().onAuthStateChanged((user)=> {
+              if (user) {
+                    // User is signed in.
+            //        let email = user.email;
+            //        let emailVerified = user.emailVerified;
+                  userid = user.uid;
+            //        let providerData = user.providerData;
+                  console.log(userid)
+              } else {
+                  console.log('not signed in')
+                    // User is signed out.
+              }
+            });
+
+            function validateEmail(email) {
+              var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+              return re.test(String(email).toLowerCase());
+            }
+            
+            function signUp(){
+                email=document.getElementById("email2").value;
+                password=document.getElementById("password2").value;
+                firebase.auth().createUserWithEmailAndPassword(email, password).then(()=>{
+                    console.log("worked");
+                    window.open("profile.html","_parent");
+                }).catch((err)=> {
+                    alert(`Error | ${err.code} ${err.message}`);
+                });
+            }
+            
+            function logIn(){
+                email=emailInput.value;
+                password=passwordInput.value;
+                firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
+                    console.log("worked");
+                    window.open("posts.html","_parent");
+                }).catch((error)=> {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.error(errorMessage)
+                });
+            }
+
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {
+            inDuration:800,
+            outDuration:800
+          });
+           });
+
+    $('.pushpin-demo-nav').each(function() {
+        var $this = $(this);
+        var $target = $('#' + $(this).attr('data-target'));
+        $this.pushpin({
+          top: $target.offset().top,
+          bottom: $target.offset().top + $target.outerHeight() - $this.height()
+        });
+      });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {
+          inDuration:800,
+          outDuration:800
+        });
+         });
+
+
+            
+        </script>
+        
+    </body>
+</html>
+
+
