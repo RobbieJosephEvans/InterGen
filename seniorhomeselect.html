@@ -110,7 +110,11 @@
                         }
                     }
                 if(count<5){
+
                     console.log("select more senior homes")
+                    alert(`Error - Ensure You've Selected At Least 5 Options`);
+
+
                 }else{
                     for(i=0;i<list.length;i++){
                         db.collection("users").doc(userid).collection("Senior Homes").add({
