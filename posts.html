@@ -1,0 +1,157 @@
+<html>
+    <head>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+        </style>
+        
+    </head>
+
+    <body>
+        <ul id="slide-out" class="sidenav">
+    <li><div class="user-view">
+      <div class="background">
+        <!-- <img src="images/office.jpg">
+      </div>
+      <a href="#user"><img class="circle" src="images/yuna.jpg"></a> -->
+      <a href="#name"><span class="white-text name">John Doe</span></a>
+      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="mission.html">Our Mission</a></li>
+    <li><a href="posts.html">Posts</a></li>
+    <li><a href="additionalinfo.html">Additional Information</a></li>
+    <li><a href="chats.html">Chats</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Profile</a></li>
+    <li><a class="waves-effect" href="profilepage.html">Your Account</a></li>
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">Activate Sidenav</i></a>
+        <div id="posts"></div>
+
+        
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {
+      inDuration:800,
+      outDuration:800
+    });
+     });
+             let userid;
+             var firebaseConfig = {
+                apiKey: "AIzaSyD-3h6lfab3mP5Qdhy5ser3wUdH8k7fF7U",
+                authDomain: "project1-d5434.firebaseapp.com",
+                databaseURL: "https://project1-d5434.firebaseio.com",
+                projectId: "project1-d5434",
+                storageBucket: "project1-d5434.appspot.com",
+                messagingSenderId: "1035093859939",
+                appId: "1:1035093859939:web:637ed330927bad29236256",
+                measurementId: "G-99E92MZGPG"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            const db = firebase.firestore();
+            firebase.auth().onAuthStateChanged((user)=> {
+              if (user) {
+                    // User is signed in.
+            //        let email = user.email;
+            //        let emailVerified = user.emailVerified;
+                  userid = user.uid;
+            //        let providerData = user.providerData;
+                  console.log(userid)
+                  createposts()
+              } else {
+                  console.log('not signed in')
+                    // User is signed out.
+              }
+            });
+        function done(string){
+            document.getElementById("posts").innerHTML=string;
+        }
+        function write(list1){
+            console.log("hello")
+                let homelist=[];
+                var string;
+                var count;
+                var name="";
+                //console.log(userid)
+                db.collection("users").doc(userid).collection("Senior Homes").get().then((querySnapshot)=>{
+                    querySnapshot.forEach((doc)=> {
+                        //console.log("hello")
+                        homelist.push(doc.data()["home"])
+                        //console.log(homelist)
+                    });
+                }).then(()=>{
+                    for(i=0;i<homelist.length;i++){
+                        for(j=0;j<list1.length;j++){
+                            if(homelist[i]==list1[j]['home']){
+                                if(string==undefined){
+                                    string="";
+                                }
+                                if(homelist[i]!=undefined){
+                                    console.log(homelist[i])
+                                    name=homelist[i]
+                                    string=string+"<div class='container'> <div class='card-panel grey lighten-5 z-depth-1'><h5 style='color: #2A2B41'>"+homelist[i]+" | "+list1[j]['num']+" Patients Unoccupied | <button onclick='seeposts(\""+name+"\")' class='waves-effect waves-light btn-small' style='background-color: #2A2B41'>More Info</button></h5></div></div>"
+                                    if(i==homelist.length-1){
+                                        done(string)
+                                    }
+                                }
+                               
+                            }
+
+                        }
+                    }
+                })
+            
+        }
+        function createposts(){
+            
+            var list1=[];
+            var count;
+            db.collection("Posts").get().then((dataget)=>{
+                dataget.forEach((doc)=>{
+                    count=0;
+                    //console.log(doc.id)
+                    //home.push(doc.id)
+                    db.collection("Posts").doc(doc.id).collection("s").get().then((query)=>{
+                        //num.push(query.size);
+                        count=query.size;
+                    }).then(()=>{
+                        //console.log(num)
+                        list1.push({home:doc.id, num:count})
+                    })
+                    
+                })
+            }).then(()=>{
+                console.log(list1)
+                write(list1)
+                //console.log(home)
+                //console.log(num)
+            })
+            db.collection("Posts").get().then((query)=>{
+                query.forEach((doc)=>{
+                    //console.log(doc.id)
+                })
+            })
+        
+        
+            
+        
+        }
+        function seeposts(stuff){
+            console.log(stuff)
+            window.localStorage.setItem("HomeName",stuff);
+            window.open("SpcPosts.html","_parent")
+        }
+            
+        
+        </script>
+        
+    </body>
+</html>
