@@ -6,8 +6,33 @@
             .buttons{
 
                 font-size: 010px;
+                justify-content: space-around;
 
             }
+
+            .changeLook:hover {
+                cursor: pointer;
+                background-color:;
+
+            }
+
+            .selections {
+                
+                padding: 4px;
+                float: left;
+                padding: 10px;
+                background-color: grey;
+                margin: 5px;
+                color: black;
+                justify-content: space-evenly;
+            }
+
+            .space-even {
+                justify-content: space-evenly;
+
+            }
+
+
         </style>
         
     </head>
@@ -18,7 +43,7 @@
 
         <h3>Select Senior Homes Near You (minimum of 5):</h3>
 
-        <div id="buttons">
+        <div class="changeLook" id="buttons" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
         </div>
         <br>
         <button onclick="sethomes()">Continue</button>
@@ -47,6 +72,7 @@
             //        let email = user.email;
             //        let emailVerified = user.emailVerified;
                   userid = user.uid;
+
             //        let providerData = user.providerData;
                   console.log(userid)
               } else {
@@ -70,7 +96,7 @@
             console.log(residentialhome)
             var string="";
             for(i=0;i<data[0]["features"].length;i++){
-                string=string + "<button id="+"'"+data[0]['features'][i]['properties']['NAME']+"'"+ " onclick=changecolour(data[0]['features']["+i+"]['properties']['NAME']) style=';'>"+data[0]["features"][i]["properties"]["NAME"]+"</button>"
+                string=string + "<a class='selections' style='justify-content: space-evenly;' id="+"'"+data[0]['features'][i]['properties']['NAME']+"'"+ " onclick=changecolour(data[0]['features']["+i+"]['properties']['NAME']) style=';'>"+data[0]["features"][i]["properties"]["NAME"]+"<br>"+data[0]["features"][i]["properties"]["ADDRESS"]+"</a>"
 
 
                 ;
@@ -94,7 +120,7 @@
                             document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#8860d0";
                         } else if(residentialhome[i]['value']==true){
                             residentialhome[i]['value']=false;
-                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#ffffff";
+                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#808080";
                         }
                         
                     }
@@ -121,7 +147,7 @@
                             home:list[i]
                         })
                     }
-                        window.open("posts.html")
+                        window.open("posts.html","_parent")
                     
                 }
                 
