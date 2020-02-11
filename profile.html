@@ -99,6 +99,34 @@
 
                 background-color: #8860d0;
               }
+              .buttons{
+
+                  font-size: 010px;
+                  justify-content: space-around;
+
+              }
+
+              .changeLook:hover {
+                  cursor: pointer;
+                  background-color:;
+
+              }
+
+              .selections {
+                  
+                  padding: 4px;
+                  float: left;
+                  padding: 10px;
+                  background-color: grey;
+                  margin: 5px;
+                  color: black;
+                  justify-content: space-evenly;
+              }
+
+              .space-even {
+                  justify-content: space-evenly;
+
+              }
 
               /* end of collapsible */
         </style>
@@ -141,12 +169,15 @@
         <br>
         <button onclick="setprofile()" style="background-color:#8860d0" class="waves-effect waves-light btn">Continue</button>
 
-        <!-- collapsible start 
+        <!--collapsible start -->
         <button class="collapsible" id="collapse" >Open Collapsible</button>
         <div class="content">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <div class="changeLook" id="buttons" style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+          </div>
+          <button onclick="sethomes()">Continue</button>
         </div>
-        collapsible end -->
+        <!--collapsible end -->
 
 
 <!-- script -->
@@ -156,6 +187,7 @@
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
         <script>
+
             let userid;
              var firebaseConfig = {
                 apiKey: "AIzaSyD-3h6lfab3mP5Qdhy5ser3wUdH8k7fF7U",
@@ -226,6 +258,76 @@
               });
             }
             //collapsible end
+
+            //seniorhomeselect start
+            var residentialhome = [];
+            for(i=0;i<data.length;i++){
+                var strings=data[0]["features"][i]["properties"]["NAME"];
+                residentialhome.push({
+                    name:strings,
+                    value:false
+                })
+            }
+            residentialhome.shift()
+            console.log(residentialhome)
+            var string="";
+            for(i=0;i<data[0]["features"].length;i++){
+                string=string + "<a class='selections' style='justify-content: space-evenly;' id="+"'"+data[0]['features'][i]['properties']['NAME']+"'"+ " onclick=changecolour(data[0]['features']["+i+"]['properties']['NAME']) style=';'>"+data[0]["features"][i]["properties"]["NAME"]+"<br>"+data[0]["features"][i]["properties"]["ADDRESS"]+"</a>"
+
+
+                ;
+                
+            }
+            document.getElementById("buttons").innerHTML=string;
+            
+            for(i=0;i<data[0]["features"].length;i++){
+                var strings=data[0]["features"][i]["properties"]["NAME"];
+                residentialhome.push({
+                    name:strings,
+                    value:false
+                })
+            }
+            function changecolour(info){
+                console.log(info)
+                for(i=0;i<data[0]["features"].length;i++){
+                    if(info==residentialhome[i]['name']){
+                        if(residentialhome[i]['value']==false){
+                            residentialhome[i]['value']=true;
+                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#8860d0";
+                        } else if(residentialhome[i]['value']==true){
+                            residentialhome[i]['value']=false;
+                            document.getElementById(data[0]['features'][i]['properties']['NAME']).style.background="#808080";
+                        }
+                        
+                    }
+                }
+            }
+            function sethomes(){
+                var count=0;
+                var list=[];
+                for(i=0;i<residentialhome.length;i++){
+                        if(residentialhome[i]["value"]==true){
+                            count=count+1
+                            list.push(residentialhome[i]["name"])
+                        }
+                    }
+                if(count<5){
+
+                    console.log("select more senior homes")
+                    alert(`Error - Ensure You've Selected At Least 5 Options`);
+
+
+                }else{
+                    for(i=0;i<list.length;i++){
+                        db.collection("users").doc(userid).collection("Senior Homes").add({
+                            home:list[i]
+                        })
+                    }
+                        window.open("posts.html","_parent")
+                    
+                }
+                
+            }
             
         </script>
         
