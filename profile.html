@@ -1,6 +1,8 @@
 <html>
     <head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +14,113 @@
             input{
                 margin-left: 10px;
             }
+            .active {
+              background-color: #717171;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+
+              }
+
+              li {
+                float: left;
+              }
+
+              li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+              }
+
+              li a:hover {
+                background-color: #111;
+              /*start of collapsible */
+              }
+              .collapsible {
+                background-color: #8860d0;
+                color: white;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+              }
+
+              .active, .collapsible:hover {
+                background-color: #555;
+              }
+
+              .collapsible:after {
+                content: '\002B';
+            
+                color: white;
+                font-weight: bold;
+                float: right;
+                margin-left: 5px;
+              }
+
+              .active:after {
+                content: "\2212";
+                
+              }
+
+              .content {
+                padding: 0 18px;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+                background-color: #f1f1f1;
+              }
+
+              .content:after {
+
+                background-color: #8860d0;
+              }
+
+              .collabsible active {
+
+                background-color: #8860d0;
+              }
+
+              button:focus {
+
+                background-color: #8860d0;
+              }
+
+              /* end of collapsible */
         </style>
 
 
         <body style="font-family: Lucida Console; background-image: linear-gradient(to bottom right, white);">
+
+         <!-- navbar start --> 
+
+        <ul class="">
+          <!--<li><img src="interGenLogo.jpg" style="height:50%"></li> -->
+          <div class="container">
+            <!-- <a src="interGenLogo.jpg" style="position: absolute;margin-top: 0px;"></a> -->
+            <li><a class="active" href="testerIndex2.html">InterGen</a></li>
+            <li><a href="#OurMission">Our Mission</a></li>
+            <!-- <li><a href="posts.html">Posts</a></li> -->
+            <li><a href="#GetStarted">Log In / Sign Up</a></li>
+            <li><a href="#AdditionalInformation">More Information</a></li>
+          </div>
+        </ul>
+
+        <!-- navbar end -->
 
 
         <div class="container">
@@ -26,7 +131,7 @@
         <h6><b>Last Name:</h6>
         <input type="text" id="LastName" placeholder="Smith">
         <h6><b>Age:</h6>
-        <input type="text" id="Age" placeholder="20">
+        <input type="number" id="Age" placeholder="20">
         <h6><b>Address:</h6>
         <input type="text" id="Address" placeholder="46 Street Avenue">
         <h6><b>Additional Information:</h6>
@@ -35,6 +140,17 @@
         <br>
         <br>
         <button onclick="setprofile()" style="background-color:#8860d0" class="waves-effect waves-light btn">Continue</button>
+
+        <!-- collapsible start 
+        <button class="collapsible" id="collapse" >Open Collapsible</button>
+        <div class="content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        collapsible end -->
+
+
+<!-- script -->
+
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
@@ -91,6 +207,25 @@
                     console.error("Error adding document: ", error);
                 });
             }
+
+            //collapsible start
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                  content.style.maxHeight = null;
+                } else {
+                  content.style.maxHeight = content.scrollHeight + "px";
+                  //content.style.background-color = "#8860d0"
+
+                } 
+              });
+            }
+            //collapsible end
             
         </script>
         
